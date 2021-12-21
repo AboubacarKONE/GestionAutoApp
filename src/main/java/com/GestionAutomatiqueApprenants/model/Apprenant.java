@@ -1,5 +1,6 @@
 package com.GestionAutomatiqueApprenants.model;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.validation.constraints.Email;
 
@@ -18,6 +19,7 @@ public class Apprenant extends AbstractEntity{
 	@Email
 	private String email;
 	private Long telephone;
+	@Embedded
 	private Adresse adresse;
 
 }

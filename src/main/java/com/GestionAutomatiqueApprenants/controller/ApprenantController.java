@@ -1,5 +1,6 @@
 package com.GestionAutomatiqueApprenants.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,9 +41,9 @@ public class ApprenantController {
 	List<Apprenant>findAllApprenant(){
 		return apprenantService.findAllApprenant();
 	}
-	@GetMapping("/listeByGroupe/nbreApprenant={apprenant}&nbreGroupe={groupe}")
-	List<Apprenant>findApprenantByGroupe(int nombreApprenant, int nombreGroupe){
-		return apprenantService.findApprenantByGroupe(nombreApprenant, nombreGroupe);
+	@GetMapping("/listeByRandomGroupe/nbreApprenant={apprenant}&nbreGroupe={groupe}")
+	ArrayList<List<Apprenant>> findApprenantByGroupe(@PathVariable int apprenant,@PathVariable int groupe){
+		return apprenantService.findApprenantByRandomGroupe(apprenant, groupe);
 	}
 	@DeleteMapping
 	void delete(Integer id) {
