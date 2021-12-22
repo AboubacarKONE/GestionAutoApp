@@ -11,6 +11,7 @@ public interface ApprenantService {
 	Apprenant findApprenantById(Integer id);
 	List<Apprenant>findAllApprenant();
 	ArrayList<List<Apprenant>> findApprenantByRandomGroupe(int nombreApprenant, int nombreGroupe);
+	ArrayList<List<Apprenant>> findApprenantByGroupe(int nombreApprenant, int nombreGroupe);
 	void delete(Integer id);
 	Apprenant findByEmail(String email);
 

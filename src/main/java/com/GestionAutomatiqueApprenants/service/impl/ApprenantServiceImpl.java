@@ -92,8 +92,6 @@ public class ApprenantServiceImpl implements ApprenantService {
 			}
 		}
 
-		System.out.println(app.size());
-
 		return Groupe;
 	}
 
@@ -129,6 +127,31 @@ public class ApprenantServiceImpl implements ApprenantService {
 			throw new InvalidEntityException("veuillez renseigner une valeur valide pour les apprenants et le tableau");
 		}
 		
+	}
+
+	@Override
+	public ArrayList<List<Apprenant>> findApprenantByGroupe(int nbreApprenant, int nbreGroupe) {
+		List<Apprenant> app = apprenantRepository.findAll();
+		validate(nbreApprenant, nbreGroupe);
+		ArrayList<List<Apprenant>> Groupe = new ArrayList<List<Apprenant>>();
+		for (int i = 1; i <= nbreGroupe; i++) {
+			ArrayList<Apprenant> groupe = new ArrayList<>();
+			for (int j = 1; j <= nbreApprenant; j++) {
+				Apprenant randomElement = app.get(j);
+				groupe.add(randomElement);
+				app.remove(j);
+				// System.out.println(app.size());
+			}
+			Groupe.add(groupe);
+			// groupe.removeAll(groupe);
+		}
+		if (app.size() != 0) {
+			for (int i = 0; i < app.size(); i++) {
+				Apprenant randomElement = app.get(i);
+				Groupe.get(i).add(randomElement);
+			}
+		}
+		return Groupe;
 	}
 
 }

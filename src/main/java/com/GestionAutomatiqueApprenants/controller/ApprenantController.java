@@ -42,8 +42,12 @@ public class ApprenantController {
 		return apprenantService.findAllApprenant();
 	}
 	@GetMapping("/listeByRandomGroupe/nbreApprenant={apprenant}&nbreGroupe={groupe}")
-	ArrayList<List<Apprenant>> findApprenantByGroupe(@PathVariable int apprenant,@PathVariable int groupe){
+	ArrayList<List<Apprenant>> findApprenantByRandomGroupe(@PathVariable int apprenant,@PathVariable int groupe){
 		return apprenantService.findApprenantByRandomGroupe(apprenant, groupe);
+	}
+	@GetMapping("/listeByGroupe/nbreApprenant={apprenant}&nbreGroupe={groupe}")
+	ArrayList<List<Apprenant>> findApprenantByGroupe(@PathVariable int apprenant,@PathVariable int groupe){
+		return apprenantService.findApprenantByGroupe(apprenant, groupe);
 	}
 	@DeleteMapping
 	void delete(Integer id) {
